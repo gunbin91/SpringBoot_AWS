@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MemberMapper">
+    <insert id="insertMember" parameterType="hashMap">
+        INSERT INTO MEMBER(ID, NAME, PASS) VALUES('${id}', '${name}', '${pass}')
+    </insert>
+    
+    <select id="checkMember" parameterType="hashMap" resultType="hashMap">
+    	SELECT * FROM MEMBER WHERE ID='${id}' AND PASS='${pass}'
+    </select>
+</mapper>
