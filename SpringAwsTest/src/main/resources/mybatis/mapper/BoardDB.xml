@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BoardMapper">
+    <insert id="insertBoard" parameterType="hashMap">
+        INSERT INTO BOARD VALUES(BOARD_SEQUENCE.NEXTVAL, '${id}', '${title}', '${content}', SYSDATE)
+    </insert>
+    
+    <select id="selectAll" resultType="hashMap">
+    	SELECT ROW_NUMBER() OVER(ORDER BY A.BOARD_NO DESC) AS NUM, A.* FROM BOARD A ORDER BY BOARD_NO DESC
+    </select>
+    
+    <select id="selectBoard" parameterType="hashMap" resultType="hashMap">
+    	SELECT * FROM BOARD WHERE BOARD_NO=${no}
+    </select>
+    
+    <delete id="deleteBoard" parameterType="hashMap">
+    	DELETE BOARD WHERE BOARD_NO=${no}
+    </delete>
+</mapper>
