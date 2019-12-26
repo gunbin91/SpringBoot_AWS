@@ -1,0 +1,24 @@
+os: windows
+language: java
+jdk: oraclejdk8
+install: true
+  
+branches:
+  only:
+    - master
+
+git :
+  depth: false
+
+# Travis CI 서버의 Home
+cache:
+  directories:
+    - C:/Users/jwkim/.m2
+
+script: ./mvnw clean install
+
+# CI 실행 완료시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - ghbnty0202@gmail.com
