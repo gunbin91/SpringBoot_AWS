@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.MemberService;
 
+import lombok.Setter;
+
 @Controller
 public class HomeController {
 

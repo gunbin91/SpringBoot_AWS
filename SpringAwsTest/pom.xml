@@ -99,6 +99,21 @@
 			<systemPath>${webapp.lib}/ojdbc8.jar</systemPath>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.8</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>1.4.1.RELEASE</version>
+        </dependency>
+
+
 	</dependencies>
 
 	<build>
