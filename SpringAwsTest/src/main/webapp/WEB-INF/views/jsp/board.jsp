@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -29,13 +30,13 @@
 				<th>작성일: ${board.board_date }</th>
 			</tr>
 			<tr>
-				<td colspan="3">${board.board_content }</td>
+				<td colspan="3" style="white-space: pre;"><c:out
+						value="${board.board_content }" /></td>
 			</tr>
 		</table>
 		<c:if test="${sessionScope.login_id eq board.board_writer}">
 			<div style="padding-left: 93.3%;">
-				<button
-					onclick="location.href='/delete_board?no=${board.board_no}'"
+				<button onclick="location.href='/delete_board?no=${board.board_no}'"
 					class="btn btn-danger">삭제</button>
 			</div>
 		</c:if>
