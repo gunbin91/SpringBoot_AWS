@@ -112,7 +112,13 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
             <version>1.4.1.RELEASE</version>
         </dependency>
-
+        
+        <!-- s3 test -->
+        <dependency>
+        	<groupId>com.amazonaws</groupId>
+        	<artifactId>aws-java-sdk</artifactId>
+        	<version>1.11.386</version>
+        </dependency>
 
 	</dependencies>
 

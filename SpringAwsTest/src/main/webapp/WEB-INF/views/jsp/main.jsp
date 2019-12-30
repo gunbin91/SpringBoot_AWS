@@ -35,6 +35,11 @@
 			alert("로그인 후 이용가능합니다.");
 			location.href = "/";
 		}
+		
+		if ("${S3}" != "") {
+			alert("S3버킷전송 성공[ ${S3} ]");
+			location.href = "/";
+		}
 	</script>
 
 	<div class="w3-container">
@@ -197,7 +202,8 @@
 						</div>
 						<div class="form-group">
 							<label for="comment">내용</label>
-							<textarea class="form-control" rows="5" name="content" id="comment"></textarea>
+							<textarea class="form-control" rows="5" name="content"
+								id="comment"></textarea>
 						</div>
 					</div>
 
@@ -216,6 +222,14 @@
 	</div>
 	<!-- 글쓰기 모달 -->
 	<!-- 글쓰기 -->
+
+	<!-- S3버킷으로 데이터 보내기 테스트 -->
+	<c:if test="${sessionScope.login_id eq 'test001'}">
+		<form action="/aws_test" method="post">
+			<button type="submit" class="btn btn-danger">글목록 S3버킷으로 csv내보내기</button>
+		</form>
+	</c:if>
+	<!-- S3버킷으로 데이터 보내기 테스트 -->
 
 </body>
 </html>
