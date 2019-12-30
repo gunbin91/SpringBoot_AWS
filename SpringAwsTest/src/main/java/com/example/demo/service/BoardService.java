@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.BoardMapper;
+import com.example.demo.vo.BoardVo;
 
 @Service
 public class BoardService {
@@ -18,11 +19,11 @@ public class BoardService {
         boardMapper.insertBoard(map);
     }
     
-    public List<HashMap> selectAll() throws Exception{
+    public List<BoardVo> selectAll() throws Exception{
     	return boardMapper.selectAll();
     }
     
-    public HashMap selectBoard(HashMap map) throws Exception{
+    public BoardVo selectBoard(HashMap map) throws Exception{
     	return boardMapper.selectBoard(map);
     }
     

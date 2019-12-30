@@ -5,7 +5,7 @@
         INSERT INTO MEMBER(ID, NAME, PASS) VALUES('${id}', '${name}', '${pass}')
     </insert>
     
-    <select id="checkMember" parameterType="hashMap" resultType="hashMap">
+    <select id="checkMember" parameterType="hashMap" resultType="com.example.demo.vo.MemberVo">
     	SELECT * FROM MEMBER WHERE ID='${id}' AND PASS='${pass}'
     </select>
 </mapper>

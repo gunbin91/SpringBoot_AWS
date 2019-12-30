@@ -5,11 +5,11 @@
         INSERT INTO BOARD VALUES(BOARD_SEQUENCE.NEXTVAL, '${id}', '${title}', '${content}', SYSDATE)
     </insert>
     
-    <select id="selectAll" resultType="hashMap">
+    <select id="selectAll" resultType="com.example.demo.vo.BoardVo">
     	SELECT ROW_NUMBER() OVER(ORDER BY A.BOARD_NO DESC) AS NUM, A.* FROM BOARD A ORDER BY BOARD_NO DESC
     </select>
     
-    <select id="selectBoard" parameterType="hashMap" resultType="hashMap">
+    <select id="selectBoard" parameterType="hashMap" resultType="com.example.demo.vo.BoardVo">
     	SELECT * FROM BOARD WHERE BOARD_NO=${no}
     </select>
     

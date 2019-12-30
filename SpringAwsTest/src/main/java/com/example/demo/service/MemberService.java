@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.MemberMapper;
+import com.example.demo.vo.MemberVo;
 
 @Service
 public class MemberService {
@@ -18,7 +19,7 @@ public class MemberService {
         memberMapper.insertMember(map);
     }
     
-    public List<HashMap> checkMember(HashMap map) throws Exception{
+    public List<MemberVo> checkMember(HashMap map) throws Exception{
         return memberMapper.checkMember(map);
     }
 }

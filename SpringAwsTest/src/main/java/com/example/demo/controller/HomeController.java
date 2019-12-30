@@ -16,8 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.service.BoardService;
 import com.example.demo.service.MemberService;
-
-import lombok.Setter;
+import com.example.demo.vo.MemberVo;
 
 @Controller
 public class HomeController {
@@ -50,7 +49,7 @@ public class HomeController {
 	public ModelAndView login(@RequestParam Map paramMap, HttpServletRequest request) throws Exception {
 		System.out.println("path= /login / param=" + paramMap);
 		ModelAndView mav = new ModelAndView("main");
-		List<HashMap> list = memberService.checkMember((HashMap) paramMap);
+		List<MemberVo> list = memberService.checkMember((HashMap) paramMap);
 		if (list.size() < 1) {
 			System.out.println("로그인실패");
 			mav.addObject("login", "F");
@@ -58,7 +57,7 @@ public class HomeController {
 			System.out.println("로그인성공");
 			System.out.println(request.getParameter("id"));
 			HttpSession session = request.getSession();
-			session.setAttribute("login_id", list.get(0).get("ID"));
+			session.setAttribute("login_id", list.get(0).getId());
 			mav.setViewName("redirect:/");
 		}
 		return mav;
@@ -98,18 +97,18 @@ public class HomeController {
 	public ModelAndView board(@RequestParam Map paramMap, HttpServletRequest request) throws Exception {
 		System.out.println("path= /board / param=" + paramMap);
 		ModelAndView mav = new ModelAndView("board");
-		mav.addObject("board",boardService.selectBoard((HashMap) paramMap));
+		mav.addObject("board", boardService.selectBoard((HashMap) paramMap));
 
 		return mav;
 	}
-	
+
 //	게시글 삭제
 	@RequestMapping(value = { "delete_board" })
 	public ModelAndView delete_board(@RequestParam Map paramMap, HttpServletRequest request) throws Exception {
 		System.out.println("path= /delete_board / param=" + paramMap);
 		ModelAndView mav = new ModelAndView("redirect:/");
-		boardService.deleteBoard((HashMap)paramMap);
+		boardService.deleteBoard((HashMap) paramMap);
 		return mav;
 	}
-	
+
 }
