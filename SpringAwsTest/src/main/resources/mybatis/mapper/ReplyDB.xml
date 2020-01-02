@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ReplyMapper">
+	<insert id="insertReply" parameterType="hashMap">
+		INSERT INTO REPLY(REPLY_NO, BOARD_NO, REPLY_WRITER, REPLY_CONTENT,
+		REPLY_DATE)
+		VALUES(REPLY_SEQUENCE.NEXTVAL, '${board_no}', '${reply_writer}', '${reply_content}', SYSDATE)
+	</insert>
+
+	<select id="selectReply" parameterType="hashMap"
+		resultType="com.example.demo.vo.ReplyVo">
+		SELECT * FROM REPLY WHERE BOARD_NO='${board_no}' ORDER BY REPLY_DATE
+	</select>
+
+	<delete id="deleteReply" parameterType="HashMap">
+		DELETE FROM REPLY WHERE REPLY_NO='${reply_no}'
+	</delete>
+</mapper>

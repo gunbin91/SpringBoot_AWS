@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <title>AWS 게시판</title>
@@ -35,7 +36,7 @@
 			alert("로그인 후 이용가능합니다.");
 			location.href = "/";
 		}
-		
+
 		if ("${S3}" != "") {
 			alert("S3버킷전송 성공[ ${S3} ]");
 			location.href = "/";
@@ -151,7 +152,12 @@
 
 	<!-- 게시판 -->
 	<div class="w3-container container">
-		<h2>게시판</h2>
+		<div class="col-xs-12" style="margin: 15px auto;">
+			<label style="font-size: 20px;"><span
+				class="glyphicon glyphicon-list-alt"></span>게시글 목록</label>
+			<button class="btn btn-primary" style="float: right;"
+				onclick="document.getElementById('id03').style.display='block'">글쓰기</button>
+		</div>
 
 		<table class="w3-table w3-striped w3-border">
 			<tr>
@@ -166,7 +172,8 @@
 					<td>${board.num }</td>
 					<td>${board.board_title }</td>
 					<td>${board.board_writer }</td>
-					<td>${board.board_date }</td>
+					<td><fmt:formatDate value="${board.board_date }"
+							pattern="yyyy.MM.dd HH:mm:ss" /></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -175,12 +182,6 @@
 
 	<h3>&nbsp;</h3>
 
-	<!-- 글쓰기 -->
-	<div style="padding-left: 93.3%;">
-		<button
-			onclick="document.getElementById('id03').style.display='block'"
-			class="btn btn-primary">글쓰기</button>
-	</div>
 	<!-- 글쓰기 모달 -->
 	<div class="container">
 		<form action="/write" method="post">
@@ -190,11 +191,21 @@
 
 					<div class="w3-center">
 						<br> <span
-							class="w3-xlarge w3-transparent w3-display-topleft">글쓰기</span> <span
+							class="w3-xlarge w3-transparent w3-display-topleft">
+							<div class="col-xs-12" style="margin: 15px auto;">
+								<label style="font-size: 20px;"><span
+									class="glyphicon glyphicon-edit"></span>게시글 작성</label>
+							</div>
+						</span>
+						<!-- <span class="w3-xlarge w3-transparent w3-display-topleft">글쓰기</span> -->
+						<span
 							onclick="document.getElementById('id03').style.display='none'"
 							class="w3-button w3-xlarge w3-transparent w3-display-topright"
 							title="Close Modal">×</span>
 					</div>
+
+					<br />
+
 					<div class="w3-section" style="padding: 3%;">
 						<div class="form-group">
 							<label><b>제목</b></label> <input class="form-control" type="text"
@@ -226,7 +237,8 @@
 	<!-- S3버킷으로 데이터 보내기 테스트 -->
 	<c:if test="${sessionScope.login_id eq 'test001'}">
 		<form action="/aws_test" method="post">
-			<button type="submit" class="btn btn-danger">글목록 S3버킷으로 csv내보내기</button>
+			<button type="submit" class="btn btn-danger">글목록 S3버킷으로
+				csv내보내기</button>
 		</form>
 	</c:if>
 	<!-- S3버킷으로 데이터 보내기 테스트 -->

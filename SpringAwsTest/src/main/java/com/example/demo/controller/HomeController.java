@@ -50,6 +50,10 @@ public class HomeController {
 		if(amazonS3 != null) {
 			try {
 				List<BoardVo> list =  boardService.selectAll();
+				File directory = new File(request.getRealPath("/UPLOAD"));
+				if(!directory.exists()) {
+					directory.mkdir();
+				}
 				
 				SimpleDateFormat  formatter = new SimpleDateFormat("yyyyMMddhhss");
 				Date date = new Date();
